@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CommandActivity extends AppCompatActivity {
 
-    private Button on, off, back, offWarning, forcedPower;
+    private Button on, off, back, offWarning, forcedPower, choosePower;
 
 
     String value = null;
@@ -39,7 +40,8 @@ public class CommandActivity extends AppCompatActivity {
         on = (Button) findViewById(R.id.on_boiler);
         off = (Button) findViewById(R.id.off_boiler);
         offWarning = (Button) findViewById(R.id.off_warning);
-        forcedPower = (Button) findViewById(R.id.forced_power)
+        forcedPower = (Button) findViewById(R.id.forced_power);
+        choosePower = (Button) findViewById(R.id.choose_power);
         on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +74,11 @@ public class CommandActivity extends AppCompatActivity {
             public void onClick(View v) {
                 value = "RUR";
                 boilerData();
+            }
+        });
+        choosePower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
 
