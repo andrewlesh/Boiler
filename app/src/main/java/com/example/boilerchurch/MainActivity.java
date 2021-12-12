@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button getInfo, setInfo;
 
     private static final int REQUEST_CALL = 1;
-    String number = "89502466003";
+    String number = "<your number>";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
