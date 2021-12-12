@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         setInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boilerData();
+                Intent commandIntent = new Intent(MainActivity.this, CommandActivity.class);
+                startActivity(commandIntent);
             }
         });
     }
@@ -77,30 +78,8 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        } else if (requestCode == 100 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            sendMessage();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    public void boilerData() {
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-            sendMessage();
-        } else {
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[] {Manifest.permission.SEND_SMS},
-                    100);
-            sendMessage();
-        }
-    }
-
-
-
-    private void sendMessage() {
-        String phone = "tel:" + number;
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(phone, null, "Тестовое сообщение", null, null);
     }
 
     public void getNotify() {
