@@ -17,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CommandActivity extends AppCompatActivity {
 
-    Button on, off, back, offWarning;
+    private Button on, off, back, offWarning, forcedPower;
 
 
     String value = null;
@@ -38,7 +38,8 @@ public class CommandActivity extends AppCompatActivity {
 
         on = (Button) findViewById(R.id.on_boiler);
         off = (Button) findViewById(R.id.off_boiler);
-        offWarning = (Button) findViewById(R.id.off_warning) ;
+        offWarning = (Button) findViewById(R.id.off_warning);
+        forcedPower = (Button) findViewById(R.id.forced_power)
         on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +67,14 @@ public class CommandActivity extends AppCompatActivity {
                 boilerData();
             }
         });
+        forcedPower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                value = "RUR";
+                boilerData();
+            }
+        });
+
 
     }
     public void boilerData() {
