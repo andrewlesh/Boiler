@@ -15,12 +15,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CommandActivity extends AppCompatActivity {
 
-    private Button back, offWarning, forcedPower, choosePower, chooseTemp;
+    private Button back, offWarning, forcedPower, choosePower, chooseTemp, autoBoiler;
     private ImageView on, off;
     private EditText powerText, tempText;
 
@@ -49,6 +50,9 @@ public class CommandActivity extends AppCompatActivity {
         chooseTemp = (Button) findViewById(R.id.choose_temp);
         powerText = (EditText) findViewById(R.id.power);
         tempText = (EditText) findViewById(R.id.temp);
+        autoBoiler = (Button) findViewById(R.id.auto_boliler);
+
+
         on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +90,35 @@ public class CommandActivity extends AppCompatActivity {
         choosePower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value =
+                if (Integer.parseInt(powerText.getText().toString()) > -1 && Integer.parseInt(powerText.getText().toString()) < 101) {
+                    value = "POW" + powerText.getText().toString();
+                    boilerData();
+                } else if (Integer.parseInt(powerText.getText().toString()) < 0 || Integer.parseInt(powerText.getText().toString()) > 100){
+                    Toast.makeText(CommandActivity.this, "Вы ввели число больше или меньше чем заданное, введите число от 0 до 100", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(CommandActivity.this, "Введите число", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        chooseTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Integer.parseInt(tempText.getText().toString()) > 54 && Integer.parseInt(tempText.getText().toString()) < 86) {
+                    value = "TEM" + "0" + tempText.getText().toString();
+                    boilerData();
+                } else if (Integer.parseInt(tempText.getText().toString()) < 55 || Integer.parseInt(tempText.getText().toString()) > 85){
+                    Toast.makeText(CommandActivity.this, "Вы ввели число больше или меньше чем заданное, введите число от 55 до 85", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(CommandActivity.this, "Введите число", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        autoBoiler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                value = "AVT";
+                boilerData();
             }
         });
 
