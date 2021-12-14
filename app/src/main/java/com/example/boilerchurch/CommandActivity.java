@@ -13,12 +13,16 @@ import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CommandActivity extends AppCompatActivity {
 
-    private Button on, off, back, offWarning, forcedPower, choosePower;
+    private Button back, offWarning, forcedPower, choosePower, chooseTemp;
+    private ImageView on, off;
+    private EditText powerText, tempText;
 
 
     String value = null;
@@ -37,11 +41,14 @@ public class CommandActivity extends AppCompatActivity {
             }
         });
 
-        on = (Button) findViewById(R.id.on_boiler);
-        off = (Button) findViewById(R.id.off_boiler);
+        on = (ImageView) findViewById(R.id.on_boiler);
+        off = (ImageView) findViewById(R.id.off_boiler);
         offWarning = (Button) findViewById(R.id.off_warning);
         forcedPower = (Button) findViewById(R.id.forced_power);
         choosePower = (Button) findViewById(R.id.choose_power);
+        chooseTemp = (Button) findViewById(R.id.choose_temp);
+        powerText = (EditText) findViewById(R.id.power);
+        tempText = (EditText) findViewById(R.id.temp);
         on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +86,10 @@ public class CommandActivity extends AppCompatActivity {
         choosePower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                value =
             }
         });
+
 
 
     }
